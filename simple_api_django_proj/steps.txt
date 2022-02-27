@@ -1,0 +1,14 @@
+1) update database setting and install all python packages from requireents.txt file
+
+2) run following commands
+>>python manage.py makemigrations
+>>python manage.py migrate
+
+3) if debug is False then run the below code
+>>python manage.py collectstatic
+
+4) if wanted to just test the api run bellow code
+>>python manage.py test
+
+5) finnaly run the below code
+>>python manage.py runserver

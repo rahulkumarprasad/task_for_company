@@ -1,0 +1,108 @@
+swagger: '2.0'
+info:
+  title: Round 2 task
+  version: "0.1"
+  description: Simple example API to store and retrieve data
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /student:
+    get:
+      tags: [student]
+      operationId: api.get_student
+      summary: Get all student
+      responses:
+        200:
+          description: Return students
+
+    post:
+      tags: [student_post]
+      operationId: api.post_student
+      summary: create new student
+      
+      responses:
+        201:
+          description: created new students
+        415:
+          description: failed creating new students
+
+
+  /student/{student_id}:
+    get:
+      tags: [student]
+      operationId: api.get_student_detail
+      summary: Get a single student
+      
+      responses:
+        200:
+          description: Return student
+          schema:
+            $ref: '#/definitions/student'
+        404:
+          description: student does not exist
+    put:
+      tags: [student]
+      operationId: api.update_student
+      summary: Create or update a pet
+      
+      responses:
+        200:
+          description: student updated
+        404:
+          description: student does not exist
+    delete:
+      tags: [student]
+      operationId: api.delete_student
+      summary: Remove a student
+     
+      responses:
+        204:
+          description: student was deleted
+        404:
+          description: student does not exist
+
+
+parameters:
+  student_id:
+    name: student_id
+    description: student's Unique identifier
+    in: path
+    type: string
+    required: true
+    pattern: "^[a-zA-Z0-9-]+$"
+    
+definitions:
+  student:
+    type: object
+    required:
+      - name
+      - age
+    properties:
+      id:
+        type: string
+        description: Unique identifier
+        example: "123"
+        readOnly: true
+      name:
+        type: string
+        description: student's name
+        example: "Susie"
+        minLength: 1
+        maxLength: 100
+      student_type:
+        type: string
+        description: Kind of animal
+        example: "cat"
+        minLength: 1
+      tags:
+        type: object
+        description: Custom tags
+      created:
+        type: string
+        format: date-time
+        description: Creation time
+        example: "2015-07-07T15:49:51.230+02:00"
+        readOnly: true
+

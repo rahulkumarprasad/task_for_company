@@ -1,0 +1,8 @@
+1)install all python packages from requireents.txt file
+2) run following command and view in browser link: http://localhost:8000/student
+>> python app.py
+
+NOTE :
+in order to run testcase the flask server should be started
+and then run following code 
+>>pytest
